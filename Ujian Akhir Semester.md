@@ -4,6 +4,48 @@ Axel Gavan (1202190004)
 
 Charisma Ilham Saputra (1202192062)
 
+## Case Study
+
+There are for 4 website will be deploy in this final project which is.
+
+- kelompok12.fpsas/ using framework laravel 8 and php 7.4
+- news.kelompok12.fpsas using framework wordpress latest and php 7.4
+- kelompok12.fpsas/product using framework yii 2.0 and php 7.4
+- kelompok12.fpsas/app using framework codeigniter 3 and php 5.6
+
+Technology will be use.
+
+- VM Ubuntu 20.04 (using bridge network methods and static ip)
+- Nginx
+- 6 instance LXC ubuntu 20.04 PHP 7.4
+- 2 instance LXC debian 10 PHP 5.6
+- 1 instance LXC debian 10 mariadb server
+- Ansible
+- kelompok12.fpsas/ using laravel 8
+- news.kelompok12.fpsas using wordpress latest version
+- kelompok12.fpsas/product using YII 2.0
+- kelompok12.fpsas/app using Code Igniter 3
+
+load balancer configuration will be use in each website
+
+- kelompok12.fpsas/
+
+   Using load balancer methods Least Connection 4 instance LXC (LXC_PHP7_1, LXC_PHP7_2, LXC_PHP7_4, LXC_PHP7_6)
+
+- news.kelompok12.fpsas
+
+   using load balancer Ip Hash methods 4 instance LXC (LXC_PHP7_2, LXC_PHP7_3, LXC_PHP7_4, LXC_PHP7_5)
+
+- kelompok12.fpsas/product
+
+   using load balancer Weighted Load Balancing methods 5 instance LXC (LXC_PHP7_1 (Weight=3), LXC_PHP7_2 (Weight=2), LXC_PHP7_4 (Weight=4), LXC_PHP7_5 (Weight=1), LXC_PHP7_6 (Weight=6))
+
+- kelompok12.fpsas/app
+
+   using load balancer Round Robin methods 2 instance LXC (LXC_PHP5_1, LXC_PHP5_2)
+
+##### Solving
+
 1. Install ansible for hosts ubuntu server
 
    - Install ansible
@@ -73,45 +115,45 @@ Charisma Ilham Saputra (1202192062)
    - Install ssh server
 
      ```markdown
-  apt install openssh-server
+    apt install openssh-server
      ```
 
    - Adding configuration at /etc/ssh/sshd_config
    
      ```markdown
-  nano /etc/ssh/sshd_config
+    nano /etc/ssh/sshd_config
      
   # setting config
      PermitRootLogin yes
      RSAAuthentication yes
      ```
-   
+
    - Restart ssh server
    
      ```markdown
-  service sshd restart
+    service sshd restart
      ```
 
    - Setting password for lxc_db_server ssh, lxc_php5_1, lxc_php5_2, lxc_php7_1, lxc_php7_2, lxc_php7_3, lxc_php7_4, lxc_php7_5 and lxc_php7_6
    
      ```markdown
-  passwd (ex: 1)
+    passwd (ex: 1)
      ```
 
    - Log out from lxc_db_server, lxc_php5_1, and lxc_php5_2, lxc_php7_1, lxc_php7_2, lxc_php7_3, lxc_php7_4, lxc_php7_5 and lxc_php7_6
    
      ```markdown
-  exit
+    exit
      ```
 
    - Entering directory
    
      ```markdown
-  cd ~/ansible/tubes
+    cd ~/ansible/tubes
      ```
 
    - Creating hosts and adding script
-   
+
    
 
 3. Creating install-mariadb.yml file and adding configuration
