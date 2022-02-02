@@ -8,10 +8,10 @@ Charisma Ilham Saputra (1202192062)
 
 There are for 4 website will be deploy in this final project which is.
 
-- kelompok12.fpsas/ using framework laravel 8 and php 7.4
-- news.kelompok12.fpsas using framework wordpress latest and php 7.4
-- kelompok12.fpsas/product using framework yii 2.0 and php 7.4
-- kelompok12.fpsas/app using framework codeigniter 3 and php 5.6
+- kelompok14.fpsas/ using framework laravel 8 and php 7.4
+- news.kelompok14.fpsas using framework wordpress latest and php 7.4
+- kelompok14.fpsas/product using framework yii 2.0 and php 7.4
+- kelompok14.fpsas/app using framework codeigniter 3 and php 5.6
 
 Technology will be use.
 
@@ -21,26 +21,26 @@ Technology will be use.
 - 2 instance LXC debian 10 PHP 5.6
 - 1 instance LXC debian 10 mariadb server
 - Ansible
-- kelompok12.fpsas/ using laravel 8
-- news.kelompok12.fpsas using wordpress latest version
-- kelompok12.fpsas/product using YII 2.0
-- kelompok12.fpsas/app using Code Igniter 3
+- kelompok14.fpsas/ using laravel 8
+- news.kelompok14.fpsas using wordpress latest version
+- kelompok14.fpsas/product using YII 2.0
+- kelompok14.fpsas/app using Code Igniter 3
 
 load balancer configuration will be use in each website
 
-- kelompok12.fpsas/
+- kelompok14.fpsas/
 
    Using load balancer methods Least Connection 4 instance LXC (LXC_PHP7_1, LXC_PHP7_2, LXC_PHP7_4, LXC_PHP7_6)
 
-- news.kelompok12.fpsas
+- news.kelompok14.fpsas
 
    using load balancer Ip Hash methods 4 instance LXC (LXC_PHP7_2, LXC_PHP7_3, LXC_PHP7_4, LXC_PHP7_5)
 
-- kelompok12.fpsas/product
+- kelompok14.fpsas/product
 
    using load balancer Weighted Load Balancing methods 5 instance LXC (LXC_PHP7_1 (Weight=3), LXC_PHP7_2 (Weight=2), LXC_PHP7_4 (Weight=4), LXC_PHP7_5 (Weight=1), LXC_PHP7_6 (Weight=6))
 
-- kelompok12.fpsas/app
+- kelompok14.fpsas/app
 
    using load balancer Round Robin methods 2 instance LXC (LXC_PHP5_1, LXC_PHP5_2)
 
@@ -892,14 +892,14 @@ load balancer configuration will be use in each website
      ; BIND reverse data file loopback interface
      ;
      $TTL    604800
-     @       IN      SOA     kelompok7.fpas. root.kelompok7.fpas. (
+     @       IN      SOA     kelompok14.fpas. root.kelompok14.fpas. (
                                    1         ; Serial
                               604800         ; Refresh
                                86400         ; Retry
                              2419200         ; Expire
                               604800 )       ; Negative Cache TTL
      ;
-     43.168.192.in-addr.arpa. IN NS kelompok7.fpas.
+     43.168.192.in-addr.arpa. IN NS kelompok14.fpas.
      185 IN PTR kelompok7.fpas.
      ```
    
